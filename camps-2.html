@@ -13,6 +13,9 @@
             --light: #ecf0f1;
             --dark: #2c3e50;
             --success: #2ecc71;
+            --background: #f9f9f9;
+            --card-bg: white;
+            --header-bg: white;
         }
         
         * {
@@ -23,9 +26,10 @@
         }
         
         body {
-            background-color: #f9f9f9;
-            color: #333;
+            background-color: var(--background);
+            color: var(--dark);
             line-height: 1.6;
+            transition: background-color 0.3s, color 0.3s;
         }
         
         a {
@@ -85,11 +89,12 @@
         
         /* Header Styles */
         header {
-            background-color: white;
+            background-color: var(--header-bg);
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
             position: sticky;
             top: 0;
             z-index: 100;
+            transition: background-color 0.3s;
         }
         
         nav {
@@ -97,6 +102,12 @@
             justify-content: space-between;
             align-items: center;
             padding: 20px 0;
+        }
+        
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 15px;
         }
         
         .logo-container {
@@ -146,6 +157,20 @@
             color: var(--primary);
         }
         
+        .theme-toggle {
+            background: none;
+            border: none;
+            font-size: 20px;
+            cursor: pointer;
+            padding: 5px;
+            transition: transform 0.3s;
+            color: var(--dark);
+        }
+        
+        .theme-toggle:hover {
+            transform: scale(1.1);
+        }
+        
         /* Hero Section */
         .hero {
             background: linear-gradient(135deg, var(--primary), var(--secondary));
@@ -168,7 +193,7 @@
         
         /* About Section */
         .about {
-            background-color: white;
+            background-color: var(--card-bg);
         }
         
         .about-content {
@@ -194,29 +219,29 @@
             display: block;
         }
         
-        /* Welcome Section */
-        .welcome {
+        /* Year 1 Section */
+        .year1 {
             background-color: var(--light);
         }
         
-        .welcome-content {
+        .year1-content {
             display: flex;
             gap: 40px;
             align-items: center;
         }
         
-        .welcome-text {
+        .year1-text {
             flex: 1;
         }
         
-        .welcome-image {
+        .year1-image {
             flex: 1;
             border-radius: 10px;
             overflow: hidden;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
         }
         
-        .welcome-image img {
+        .year1-image img {
             width: 100%;
             height: auto;
             display: block;
@@ -230,19 +255,20 @@
         }
         
         .skill-card {
-            background-color: white;
+            background-color: var(--card-bg);
             padding: 20px;
             border-radius: 8px;
             box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s;
         }
         
         .skill-card ul {
-            padding-left: 20px; /* Moves bullets inward */
-            margin: 10px 0; /* Adds space above/below the list */
+            padding-left: 20px;
+            margin: 10px 0;
         }
 
         .skill-card li {
-            margin-bottom: 5px; /* Adds space between list items */
+            margin-bottom: 5px;
         }
         
         .skill-card h4 {
@@ -263,11 +289,11 @@
         }
         
         .program-card {
-            background-color: white;
+            background-color: var(--card-bg);
             border-radius: 10px;
             overflow: hidden;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s;
+            transition: transform 0.3s, background-color 0.3s;
         }
         
         .program-card:hover {
@@ -302,7 +328,7 @@
         
         /* Testimonials Section */
         .testimonials {
-            background-color: white;
+            background-color: var(--card-bg);
             text-align: center;
         }
         
@@ -318,6 +344,7 @@
             padding: 30px;
             border-radius: 10px;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: background-color 0.3s;
         }
         
         .testimonial-card .quote {
@@ -344,10 +371,11 @@
         }
         
         .team-member {
-            background-color: white;
+            background-color: var(--card-bg);
             border-radius: 10px;
             overflow: hidden;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s;
         }
         
         .team-member-image {
@@ -376,7 +404,7 @@
         
         /* SPAR Section */
         .spar {
-            background-color: white;
+            background-color: var(--card-bg);
         }
         
         .spar-content {
@@ -412,9 +440,39 @@
             border-left: 3px solid var(--accent);
         }
         
+        /* Events Section Styles */
+        .event-toggle {
+            display: flex;
+            gap: 10px;
+            margin: 20px 0 30px;
+        }
+        
+        .event-btn {
+            padding: 8px 20px;
+            border: none;
+            background: #f0f0f0;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .event-btn.active {
+            background: var(--accent);
+            color: white;
+        }
+        
+        .event-content {
+            display: none;
+        }
+        
+        .event-content.active {
+            display: block;
+        }
+        
         /* Contact Section */
         .contact {
-            background-color: white;
+            background-color: var(--card-bg);
         }
         
         .contact-container {
@@ -456,6 +514,9 @@
             border: 1px solid #ddd;
             border-radius: 5px;
             font-size: 16px;
+            background-color: var(--card-bg);
+            color: var(--dark);
+            transition: background-color 0.3s;
         }
         
         .form-group textarea {
@@ -468,11 +529,12 @@
         }
         
         .faq-item {
-            background-color: white;
+            background-color: var(--card-bg);
             border-radius: 10px;
             margin-bottom: 15px;
             overflow: hidden;
             box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s;
         }
         
         .faq-question {
@@ -484,6 +546,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            transition: background-color 0.3s;
         }
         
         .faq-answer {
@@ -500,9 +563,10 @@
         
         /* Footer */
         footer {
-            background-color: var(--dark);
+            background-color: var(--primary);
             color: white;
             padding: 60px 0 20px;
+            transition: background-color 0.3s;
         }
         
         .footer-content {
@@ -564,17 +628,63 @@
             font-size: 14px;
         }
         
+        /* Dark Mode Styles */
+        [data-theme="dark"] {
+            --primary: #60a5fa;
+            --secondary: #a78bfa;
+            --accent: #f87171;
+            --light: #1f2937;
+            --dark: #f9fafb;
+            --success: #34d399;
+            --background: #111827;
+            --card-bg: #1f2937;
+            --header-bg: #1f2937;
+        }
+        
+        [data-theme="dark"] .hero {
+            background: linear-gradient(135deg, #1e40af, #7c3aed);
+        }
+        
+        [data-theme="dark"] .faq-question {
+            background-color: #1e40af;
+        }
+        
+        [data-theme="dark"] .form-group input,
+        [data-theme="dark"] .form-group textarea,
+        [data-theme="dark"] .form-group select {
+            background-color: #374151;
+            border-color: #4b5563;
+        }
+        
+        [data-theme="dark"] footer {
+            background-color: #111827;
+            border-top: 1px solid #374151;
+        }
+        
+        [data-theme="dark"] .footer-column a {
+            color: #9ca3af;
+        }
+        
+        [data-theme="dark"] .event-btn {
+            background: #374151;
+            color: var(--dark);
+        }
+        
+        [data-theme="dark"] .event-btn.active {
+            background: var(--accent);
+        }
+        
         /* Responsive Styles */
         @media (max-width: 992px) {
             .about-content,
-            .welcome-content,
+            .year1-content,
             .spar-content,
             .contact-container {
                 flex-direction: column;
             }
             
             .about-image,
-            .welcome-image,
+            .year1-image,
             .spar-image {
                 order: -1;
             }
@@ -587,7 +697,7 @@
                 left: -100%;
                 width: 100%;
                 height: calc(100vh - 80px);
-                background-color: white;
+                background-color: var(--header-bg);
                 flex-direction: column;
                 align-items: center;
                 padding-top: 40px;
@@ -625,14 +735,17 @@
                     <img src="The Argument Lab.png" alt="The Argument Lab Logo" class="logo-img">
                     <div class="logo-text">The <span>Argument</span> Lab</div>
                 </div>
-                <button class="mobile-menu-btn">☰</button>
-                <ul class="nav-links">
-                    <li><a href="#about">About Us</a></li>
-                        <li><a href="#welcome">Skills</a></li>
-                        <li><a href="#events">Events</a></li>
-                        <li><a href="#faq">FAQ</a></li>
-                        <li><a href="#contact">Contact</a></li>
-                </ul>
+                <div class="nav-right">
+                    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">
+                        <span class="theme-icon">🌙</span>
+                    </button>
+                    <button class="mobile-menu-btn">☰</button>
+                    <ul class="nav-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="#year1">2024</a></li>
+                        <li><a href="#year2">2025</a></li>
+                    </ul>
+                </div>
             </nav>
         </div>
     </header>
@@ -640,272 +753,84 @@
     <!-- Hero Section -->
     <section class="hero">
         <div class="container">
-            <h1 style="font-size: 40px;">Empowering Young Minds Through Speech & Debate</h1>
-            <p >Join our summer camps designed to build confidence, critical thinking, and communication skills for students in grades 4-8.</p>
-
+            <h1 style="font-size: 40px;">Our Previous Camps</h1>
+            <p>We have now been hosting speech and debate programs for over 2 years!</p>
         </div>
     </section>
 
-    <!-- About Section -->
-    <section id="about" class="about">
+    <!-- Year 1 Section -->
+    <section id="year1" class="year1">
         <div class="container">
-            <h2 style="font-size: 30px;">About The Argument Lab</h2>
-            <div class="about-content">
-                <div class="about-text">
-                    <p style="font-size: 23px;">The Argument Lab is dedicated to providing high-quality speech and debate education to younger students. Our summer camps are designed to introduce students to the fundamentals of public speaking, argumentation, and critical thinking in a fun and supportive environment.</p>
-                    <p style="font-size: 23px;">Whether your child is completely new to speech and debate or has some experience, our camps provide the perfect opportunity to grow their skills and meet other students who share their interests.</p>
-                    <p style="font-size: 23px;">We're passionate about making speech and debate accessible to every child in Reno. Learning skills such as Argumentation, Research, and Confidence aren't limited to just proficiency in debate rounds—they are lifelong skills which will help students forever.</p>
+            <h2>2024 Camps</h2>
+            <div class="year1-content">
+                <div class="year1-text">
+                    <p style="font-size: 23px;"><strong>In 2024, we hosted our first ever summer camps!</strong> <br><br> We had a total of 15 students attend our camps, and they learned a variety of skills including public speaking, argumentation, and critical thinking. The students had a blast and we received great feedback from both students and parents. Students also had fun participating in a mini-tournament at the end of the week!</p>
                 </div>
-                <div class="about-image">
-                    <img src="WhatsApp Image 2025-02-23 at 15.35.26 (1).jpeg" style="width: 560px;" alt="Students participating in debate">
+                <div class="year1-image">
+                    <img src="images-2024/WhatsApp Image 2025-02-23 at 15.36.28.jpeg" style="width: 575px;" alt="Students at The Argument Lab">
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Welcome Section -->
-    <section id="welcome" class="welcome">
+    <!-- Year 2 Section -->
+    <section id="year2" class="year2">
         <div class="container">
-            <h2></h2>
-            <div class="welcome-content">
-                <div class="welcome-text">
-                    <p style="font-size: 23px;">During the Summer of 2024, we launched our first camp, with students from all over Reno and Sparks. The program lasted a week, and students learned a variety of skills, allowing them to build confidence in their skills:</p>
-                    
-                    <div class="skills-grid">
-                        <div class="skill-card">
-                            <h4 style="font-size: 22px;">Argumentation</h4>
-                            <ul>
-                                <li style="font-size: 18px;">How to make an argument convincing</li>
-                                <li style="font-size: 18px;">The different parts of an Argument</li>
-                                <li style="font-size: 18px;">The importance of clear Argumentation</li>
-                            </ul>
-                        </div>
-                        <div class="skill-card">
-                            <h4 style="font-size: 22px;">Public Speaking</h4>
-                            <ul>
-                                <li style="font-size: 18px;">Reducing verbal stutter</li>
-                                <li style="font-size: 18px;">Hand Gestures and emphasis</li>
-                                <li style="font-size: 18px;">Asking powerful cross-examination questions</li>
-                            </ul>
-                        </div>
-                        <div class="skill-card">
-                            <h4 style="font-size: 22px;">Collaboration</h4>
-                            <p style="font-size: 18px;">Students did both solo and team-based activities, learning to work together to construct arguments and present them effectively.</p>
-                        </div>
+            <h2>2025 Camps</h2>
+            <div class="year2-content">
+                <div class="year2-block">
+                    <div class="year2-text">
+                        <p style="font-size: 23px;">[Paragraph 1 placeholder: Add description of first part of 2025 camps here.]</p>
+                    </div>
+                    <div class="year2-image">
+                        <img src="images-2025/image1.jpg" alt="2025 Camp Activity 1">
                     </div>
                 </div>
-                <div class="welcome-image">
-                    <img src="WhatsApp Image 2025-02-23 at 15.36.57.jpeg" style="width: 575px;" alt="Students at The Argument Lab">
+                <div class="year2-block">
+                    <div class="year2-text">
+                        <p style="font-size: 23px;">[Paragraph 2 placeholder: Add description of second part of 2025 camps here.]</p>
+                    </div>
+                    <div class="year2-image">
+                        <img src="images-2025/image2.jpg" alt="2025 Camp Activity 2">
+                    </div>
                 </div>
             </div>
         </div>
     </section>
-<!-- Events Section -->
-<section id="events" class="spar">
-    <div class="container">
-        <h2 style="font-size: 30px;">Events</h2>
-        <div class="event-toggle">
-            <button class="event-btn active" data-event="spar">SPAR Debate</button>
-            <button class="event-btn" data-event="impromptu">Impromptu Speaking</button>
-        </div>
-        
-        <div class="spar-content">
-            <div class="event-text">
-                <!-- SPAR Content (default visible) -->
-                <div class="event-content active" id="spar-content">
-                    <h4 style="font-size: 26px;">How SPAR Works:</h4>
-                    <p style="font-size: 20px;">SPAR (Spontaneous Argumentation) is a fun, fast-paced debate format we use to help students quickly develop their argumentation skills. It's perfect for beginners and helps build confidence in public speaking.</p>
-                    
-                    <div class="event-steps">
-                        <div class="event-step">
-                            <strong style="font-size: 20px;"> Topic:</strong> <text style="font-size: 20px;"> A simple, fun topic is announced (e.g., "Cats are better than dogs") </text>
-                        </div>
-                        <div class="event-step">
-                            <strong style="font-size: 20px;">Preparation:</strong> <text style="font-size: 20px;"> Students get 2 minutes to prepare their arguments </text>
-                        </div>
-                        <div class="event-step">
-                            <strong style="font-size: 20px;">Structure:</strong> <text style="font-size: 20px;"> Each speaker presents their case, then cross-examines their opponent </text>
-                        </div>
-                        <div class="event-step">
-                            <strong style="font-size: 20px;">Judging:</strong> <text style="font-size: 20px;"> The audience or judges determine which side made the most convincing arguments </text>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Impromptu Content (hidden by default) -->
-                <div class="event-content" id="impromptu-content">
-                    <h4 style="font-size: 26px;">How Impromptu Works:</h4>
-                    <p style="font-size: 20px;">Impromptu Speaking challenges students to organize and deliver a short speech on a random topic with minimal preparation time. This event develops quick thinking and clear communication skills.</p>
-                    
-                    <div class="event-steps">
-                        <div class="event-step">
-                            <strong style="font-size: 20px;">Topic:</strong> <text style="font-size: 20px;">Students receive a random quote, word, or concept </text>
-                        </div>
-                        <div class="event-step">
-                            <strong style="font-size: 20px;">Preparation:</strong> <text style="font-size: 20px;">2 minutes to prepare a 5 minute speech</text>
-                        </div>
-                        <div class="event-step">
-                            <strong style="font-size: 20px;">Structure:</strong> <text style="font-size: 20px;">Introduction, 2-3 main points, and conclusion</text>
-                        </div>
-                        <div class="event-step">
-                            <strong style="font-size: 20px;">Judging:</strong> <text style="font-size: 20px;">Based on content, organization, and delivery</text>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="spar-image">
-                <img src="WhatsApp Image 2025-02-23 at 15.35.26.jpeg" alt="Debate Event Structure">
-            </div>
-        </div>
-    </div>
-</section>
 
-<style>
-    /* Events Section Styles */
-    .event-toggle {
-        display: flex;
-        gap: 10px;
-        margin: 20px 0 30px;
-    }
-    
-    .event-btn {
-        padding: 8px 20px;
-        border: none;
-        background: #f0f0f0;
-        border-radius: 50px;
-        cursor: pointer;
-        font-weight: 600;
-        transition: all 0.3s ease;
-    }
-    
-    .event-btn.active {
-        background: #e74c3c;
-        color: white;
-    }
-    
-    .event-content {
-        display: none;
-    }
-    
-    .event-content.active {
-        display: block;
-    }
-    
-    /* Keep existing spar-content styles */
-    .spar-content {
-        display: flex;
-        gap: 40px;
-        align-items: center;
-    }
-    
-    .spar-text, .event-text {
-        flex: 1;
-    }
-    
-    .spar-image {
-        flex: 1;
-        border-radius: 10px;
-        overflow: hidden;
-        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-    }
-    
-    .spar-image img {
-        width: 100%;
-        height: auto;
-        display: block;
-    }
-</style>
-
-<script>
-    // Event Toggle Functionality
-    document.querySelectorAll('.event-btn').forEach(btn => {
-        btn.addEventListener('click', function() {
-            // Remove active class from all buttons
-            document.querySelectorAll('.event-btn').forEach(b => b.classList.remove('active'));
-            // Add active class to clicked button
-            this.classList.add('active');
-            
-            // Hide all content
-            document.querySelectorAll('.event-content').forEach(content => {
-                content.classList.remove('active');
-            });
-            
-            // Show selected content
-            const eventType = this.dataset.event;
-            document.getElementById(`${eventType}-content`).classList.add('active');
-        });
-    });
-</script>
-
-    <!-- FAQ Section -->
-    <section id="faq" class="faq">
-        <div class="container">
-            <h2>Frequently Asked Questions</h2>
-            
-            <div class="faq-item">
-                <div class="faq-question">
-                    <span>What ages are your programs for?</span>
-                    <span>+</span>
-                </div>
-                <div class="faq-answer">
-                    <p>The program is primarily designed for students in grades 5-8.</p>
-                </div>
-            </div>
-            
-            <div class="faq-item">
-                <div class="faq-question">
-                    <span>What is the cost of the program?</span>
-                    <span>+</span>
-                </div>
-                <div class="faq-answer">
-                    <p>The program is completely free.</p>
-                </div>
-            </div>
-    
     <!-- Contact Section -->
     <section id="contact" class="contact">
         <div class="container">
             <h2>Contact Us</h2>
-            
             <div class="contact-container">
                 <div class="contact-info">
                     <h3>Get in Touch</h3>
                     <p>Have questions about our programs or want to register your child? Reach out to us!</p>
-                    
                     <p><strong>Email:</strong> theargumentlab@gmail.com</p>
                     <p><strong>Location:</strong> Reno, NV</p>
-                    
                 </div>
-                
                 <div class="contact-form">
                     <form id="registrationForm">
                         <div class="form-group">
                             <label for="name">Parent Name</label>
                             <input type="text" id="name" name="name" required>
                         </div>
-                        
                         <div class="form-group">
                             <label for="email">Email</label>
                             <input type="email" id="email" name="email" required>
                         </div>
-                        
                         <div class="form-group">
                             <label for="phone">Phone</label>
                             <input type="tel" id="phone" name="phone" required>
                         </div>
-                        
                         <div class="form-group">
                             <label for="student">Student Name & Age</label>
                             <input type="text" id="student" name="student" required>
                         </div>
-
-                        
                         <div class="form-group">
                             <label for="message">Questions or Comments</label>
                             <textarea id="message" name="message"></textarea>
                         </div>
-                        
                         <button type="submit" class="btn btn-accent">Submit Inquiry</button>
                     </form>
                 </div>
@@ -920,24 +845,15 @@
                 <div class="footer-column">
                     <h3>The Argument Lab</h3>
                     <p>Empowering young minds through speech and debate education in Reno, NV.</p>
-                    <div class="social-links">
-                        <a href="#"><i class="fab fa-facebook-f">f</i></a>
-                        <a href="#"><i class="fab fa-twitter">t</i></a>
-                        <a href="#"><i class="fab fa-instagram">i</i></a>
-                    </div>
                 </div>
-                
                 <div class="footer-column">
                     <h3>Quick Links</h3>
                     <ul>
-                        <li><a href="#about">About Us</a></li>
-                        <li><a href="#welcome">Skills</a></li>
-                        <li><a href="#events">Events</a></li>
-                        <li><a href="#faq">FAQ</a></li>
-                        <li><a href="#contact">Contact</a></li>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="#year1">2024</a></li>
+                        <li><a href="#year2">2025</a></li>
                     </ul>
                 </div>
-                
                 <div class="footer-column">
                     <h3>Contact Info</h3>
                     <ul>
@@ -948,64 +864,5 @@
             </div>
         </div>
     </footer>
-
-    <script>
-        // Mobile Menu Toggle
-        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
-        const navLinks = document.querySelector('.nav-links');
-        
-        mobileMenuBtn.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
-        });
-        
-        // FAQ Accordion
-        const faqQuestions = document.querySelectorAll('.faq-question');
-        
-        faqQuestions.forEach(question => {
-            question.addEventListener('click', () => {
-                const item = question.parentNode;
-                item.classList.toggle('active');
-                
-                // Toggle the plus/minus icon
-                const icon = question.querySelector('span:last-child');
-                icon.textContent = item.classList.contains('active') ? '-' : '+';
-            });
-        });
-        
-        // Form Submission
-        const registrationForm = document.getElementById('registrationForm');
-        
-        registrationForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            
-            // Here you would typically send the form data to a server
-            // For this example, we'll just show an alert
-            alert('Thank you for your inquiry! We will contact you shortly.');
-            registrationForm.reset();
-        });
-        
-        // Smooth Scrolling for Anchor Links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                
-                const targetId = this.getAttribute('href');
-                if (targetId === '#') return;
-                
-                const targetElement = document.querySelector(targetId);
-                if (targetElement) {
-                    window.scrollTo({
-                        top: targetElement.offsetTop - 80,
-                        behavior: 'smooth'
-                    });
-                    
-                    // Close mobile menu if open
-                    if (navLinks.classList.contains('active')) {
-                        navLinks.classList.remove('active');
-                    }
-                }
-            });
-        });
-    </script>
 </body>
 </html>
